@@ -1,4 +1,4 @@
-module gitlab.justlab.xyz/alertflow-public/runner-plugins/ping
+module gitlab.justlab.xyz/alertflow-public/runner-plugins/port-checker
 
 go 1.23.2
 

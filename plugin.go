@@ -13,18 +13,18 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-type PortCheckPlugin struct{}
+type PortCheckerPlugin struct{}
 
-func (p *PortCheckPlugin) Init() models.Plugin {
+func (p *PortCheckerPlugin) Init() models.Plugin {
 	return models.Plugin{
-		Name:    "Port Check",
+		Name:    "Port Checker",
 		Type:    "action",
 		Version: "1.0.0",
 		Creator: "JustNZ",
 	}
 }
 
-func (p *PortCheckPlugin) Details() models.PluginDetails {
+func (p *PortCheckerPlugin) Details() models.PluginDetails {
 	params := []models.Param{
 		{
 			Key:         "Host",
@@ -56,11 +56,11 @@ func (p *PortCheckPlugin) Details() models.PluginDetails {
 
 	return models.PluginDetails{
 		Action: models.ActionDetails{
-			ID:          "port_check",
-			Name:        "Port Check",
+			ID:          "port_checker",
+			Name:        "Port Checker",
 			Description: "Checks if a port is open",
 			Icon:        "solar:wi-fi-router-broken",
-			Type:        "port_check",
+			Type:        "port_checker",
 			Category:    "Network",
 			Function:    p.Execute,
 			Params:      json.RawMessage(paramsJSON),
@@ -68,7 +68,7 @@ func (p *PortCheckPlugin) Details() models.PluginDetails {
 	}
 }
 
-func (p *PortCheckPlugin) Execute(execution models.Execution, flow models.Flows, payload models.Payload, steps []models.ExecutionSteps, step models.ExecutionSteps, action models.Actions) (data map[string]interface{}, finished bool, canceled bool, no_pattern_match bool, failed bool) {
+func (p *PortCheckerPlugin) Execute(execution models.Execution, flow models.Flows, payload models.Payload, steps []models.ExecutionSteps, step models.ExecutionSteps, action models.Actions) (data map[string]interface{}, finished bool, canceled bool, no_pattern_match bool, failed bool) {
 	host := "myhost"
 	port := 22
 	timeout := 3
@@ -156,6 +156,6 @@ func (p *PortCheckPlugin) Execute(execution models.Execution, flow models.Flows,
 	return nil, true, false, false, false
 }
 
-func (p *PortCheckPlugin) Handle(context *gin.Context) {}
+func (p *PortCheckerPlugin) Handle(context *gin.Context) {}
 
-var Plugin PortCheckPlugin
+var Plugin PortCheckerPlugin
