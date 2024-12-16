@@ -19,7 +19,7 @@ func (p *PortCheckerPlugin) Init() models.Plugin {
 	return models.Plugin{
 		Name:    "Port Checker",
 		Type:    "action",
-		Version: "1.0.0",
+		Version: "1.0.4",
 		Creator: "JustNZ",
 	}
 }
